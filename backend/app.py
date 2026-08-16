@@ -65,7 +65,23 @@ if not app.config["SECRET_KEY"]:
         "FLASK_SECRET_KEY belum ditemukan. "
         "Pastikan backend/.env sudah diisi."
     )
+
+aiven_ca_path = os.getenv(
+    "AIVEN_CA_PATH",
+    "/etc/secrets/aiven-ca.pem",
+)
+
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+
+if os.path.exists(aiven_ca_path):
+    app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
+        "connect_args": {
+            "ssl": {
+                "ca": aiven_ca_path,
+            }
+        }
+    }
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
