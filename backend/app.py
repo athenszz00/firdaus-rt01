@@ -1,4 +1,5 @@
 import os
+import ssl
 from datetime import datetime
 from io import BytesIO
 
@@ -66,19 +67,18 @@ if not app.config["SECRET_KEY"]:
         "Pastikan backend/.env sudah diisi."
     )
 
-aiven_ca_path = os.getenv(
-    "AIVEN_CA_PATH",
-    "/etc/secrets/aiven-ca.pem",
-)
+aiven_ca_cert = os.getenv("AIVEN_CA_CERT")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 
-if os.path.exists(aiven_ca_path):
+if aiven_ca_cert:
+    ssl_context = ssl.create_default_context(
+        cadata=aiven_ca_cert,
+    )
+
     app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
         "connect_args": {
-            "ssl": {
-                "ca": aiven_ca_path,
-            }
+            "ssl": ssl_context,
         }
     }
 
