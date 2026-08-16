@@ -138,6 +138,12 @@ export default function Navbar() {
 
             <Link
               to="/"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
               className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
             >
               Beranda
@@ -241,6 +247,12 @@ export default function Navbar() {
 
             <a
               href="#informasi"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
               className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
             >
               Informasi
@@ -248,6 +260,12 @@ export default function Navbar() {
 
             <a
               href="#tentang"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
               className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
             >
               Tentang RT
@@ -333,7 +351,13 @@ export default function Navbar() {
 
               <Link
                 to="/"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
                 className="flex items-center gap-3 rounded-xl px-4 py-3 font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
               >
                 <Home size={18} />
@@ -387,7 +411,13 @@ export default function Navbar() {
 
               <Link
                 to="#informasi"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
                 className="flex items-center gap-3 rounded-xl px-4 py-3 font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
               >
                 <Megaphone size={18} />
@@ -396,7 +426,13 @@ export default function Navbar() {
 
               <Link
                 to="#tentang"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
                 className="flex items-center gap-3 rounded-xl px-4 py-3 font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
               >
                 <Users size={18} />
