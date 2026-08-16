@@ -31,8 +31,14 @@ export default function Login() {
       await refreshUser();
 
       // Ambil user dari session setelah login
+      const API_URL =
+        import.meta.env.VITE_API_URL ||
+        (import.meta.env.DEV
+          ? "http://localhost:5000"
+          : "");
+
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/auth/me`,
+        `${API_URL}/api/auth/me`,
         {
           method: "GET",
           credentials: "include",
